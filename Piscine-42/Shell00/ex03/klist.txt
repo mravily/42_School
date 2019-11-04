@@ -1,0 +1,5 @@
+Credentials cache: API:5DF13CA6-58B7-4B96-BA0A-38F2276CDA03
+        Principal: mravily@42.FR
+
+  Issued                Expires               Principal
+Aug 26 18:13:22 2019  Sep  2 18:13:22 2019  krbtgt/42.FR@42.FR
