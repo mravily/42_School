@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 10:42:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 10:42:51 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/04 20:46:55 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/04 20:46:55 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char l;
-
-	l = c;
-	if ((l >= 'a' && l <= 'z')||(l >= 'A' && l <= 'Z'))
-		return (1);
-	return (0);
+	
 }

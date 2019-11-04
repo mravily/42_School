@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_alnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 10:42:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 10:42:51 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/04 19:11:56 by marvin            #+#    #+#             */
+/*   Updated: 2019/11/04 19:11:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+int		ft_isalnum(int c)
 {
-	unsigned char l;
+	unsigned char alnum;
 
-	l = c;
-	if ((l >= 'a' && l <= 'z')||(l >= 'A' && l <= 'Z'))
+	alnum = c;
+	if ((alnum >= 'a' && alnum <= 'z') || (alnum >= 'A' && alnum <= 'Z') ||
+		(alnum >= '0' && alnum <= '9'))
 		return (1);
 	return (0);
 }

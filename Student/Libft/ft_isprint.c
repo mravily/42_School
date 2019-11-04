@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 10:42:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 10:42:51 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/04 19:20:49 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/04 19:20:49 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+int		ft_isprint(int c)
 {
-	unsigned char l;
+	unsigned char print;
 
-	l = c;
-	if ((l >= 'a' && l <= 'z')||(l >= 'A' && l <= 'Z'))
+	print = c;
+	if (print >= 32 && print <= 126)
 		return (1);
 	return (0);
 }
