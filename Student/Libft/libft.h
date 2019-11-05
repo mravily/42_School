@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 13:46:21 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 17:52:45 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/05 14:37:17 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ char	*ft_strncat(char *dest, const char *src, size_t n);
 char	*ft_strstr(const char *baystack, const char *needle);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 
 

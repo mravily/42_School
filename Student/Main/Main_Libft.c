@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:38:46 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 14:07:49 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/05 12:34:56 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,17 @@ int		main(void)
 	char needle [] = {"fourtou"};
 
 	puts(ft_strstr(baystack, needle));
+}
+
+/* ************************************* */
+/*               ft_strjoin              */
+/* ************************************* */
+
+#include <stdio.h>
+int		main(void)
+{
+	const char	s1[] = {"1st part of string "};
+	const char	s2[] = {"2nd part of string"};
+
+	puts(ft_strjoin(s1, s2));
 }

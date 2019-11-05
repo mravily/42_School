@@ -24,34 +24,32 @@ static unsigned int	ft_slen(const char *str)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*join;
-	unsigned int	i;
-	unsigned int	len_s;
+	char	*join;
+	int		i;
+	int		j;
+	int		len_s;
 
 	i = 0;
+	j = 0;
 	len_s = (ft_slen(s1) + ft_slen(s2));
 	join = NULL;
-	if (!(join = (char *)malloc(sizeof(char) * (len_s + 1)))
-	while (join[i])
+	if (!(join = (char *)malloc(sizeof(char) * len_s + 1)))
+		return (NULL);
+	while (i < len_s)
 	{
 		join[i] = s1[i];
+
 		if (s1[i] == '\0')
 		{
 			while (s2[j])
 			{
 				join[i] = s2[j];
+				i++;
+				j++;
 			}
 		}
+		i++;
 	}
-	
-}
-
-
-#include <stdio.h>
-int		main(void)
-{
-	const char	s1[] = {"1st part of string "};
-	const char	s2[] = {"2nd part of string"};
-
-	puts(ft_strjoin(s1, s2));
+	join[i] = '\0';
+	return (join);
 }
