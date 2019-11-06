@@ -6,40 +6,16 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:42:08 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/05 17:18:42 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/06 14:16:10 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int		compt_char(char const *s1, char const *set)
-{
-	int i;
-	int j;
-	int cmpt;
-
-	i = 0;
-	cmpt = 0;
-	if (s1[i] == '\0')
-		cmpt++;
-	while (s1[i])
-	{
-		j = 0;
-		while (set[j])
-		{
-			if (s1[i] == set[j])
-				cmpt++;
-			j++;
-		}
-		i++;
-	}
-	return (cmpt);
-}
-
 static int		s_len(char const *s1)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (s1[i])
@@ -47,39 +23,81 @@ static int		s_len(char const *s1)
 	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static int		check_char(char c, char const *charset)
+{
+	int		i;
+
+	i = 0;
+	if (c == '\0')
+		return (1);
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int		find_start(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
-	char	*str;
-	int		len_str;
 
-	len_str = (s_len(s1) - compt_char(s1, set));
-
-	printf("len_str = %d\n", len_str);
-
-	str = NULL;
-	if (!(str = (char *)malloc(sizeof(char) * len_str + 1)))
-		return (NULL);
 	i = 0;
+	j = 0;
 	while (s1[i])
 	{
-		j = 0;
-		while (set[j])
+		if (check_char(s1[i], set) == 0)
 		{
-			if (s1[i] != set[j])
-				j++;
+			return (i);
 		}
-		str[i] = s1[i];
 		i++;
 	}
-	return (str);
+	return (i);
 }
 
-int		main(void)
+static int		find_end(char const *s1, char const *set)
 {
-	const char	s1[] = {"Creztztge sztrrzignzg erstg lgirszizbrlze"};
-	char		set[] = {"zrg"};
+	int		i;
+	int		j;
+	int		end;
 
-	puts(ft_strtrim(s1, set));
+	i = s_len(s1);
+	j = 0;
+	end = i;
+	while (i > 0)
+	{
+		if (check_char(s1[i], set) == 0)
+		{
+			return (i);
+		}
+		i--;
+	}
+	return (end);
+}
+
+char			*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		len_s1;
+	char	*str;
+
+	i = find_start(s1, set);
+	j = find_end(s1, set);
+	len_s1 = j - i;
+	k = 0;
+	str = NULL;
+	if (!(str = (char *)malloc(sizeof(char) * (len_s1 + 1))))
+		return (NULL);
+	while (i <= j)
+	{
+		str[k] = s1[i];
+		k++;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

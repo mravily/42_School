@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 23:47:05 by mravily           #+#    #+#             */
-/*   Updated: 2019/09/18 22:10:41 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/06 15:21:06 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_strlen(char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	return (i);
+	return (i);42
 }
 
 int		check_char(char c, char *charset)
