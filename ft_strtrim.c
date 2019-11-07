@@ -5,111 +5,99 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 07:55:40 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/06 07:55:40 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/05 12:42:08 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/06 14:16:10 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int        s_len(char const *s1)
+static int		s_len(char const *s1)
 {
-    int i;
+	int		i;
 
-    i = 0;
-    while (s1[i])
-        i++;
-    return (i);
+	i = 0;
+	while (s1[i])
+		i++;
+	return (i);
 }
 
-static int    compt_set(char const *s1, char const *set)
+static int		check_char(char c, char const *charset)
 {
-  int i;
-  int j;
-  int size_s1;
-  int cmpt;
-  int size_set;
-  
-  i = 0;
-  j = 0;
-  cmpt = 0;
-  size_s1 = s_len(s1);
-  size_set = s_len(set);
-  while (i < size_set)
-  {
-    j = 0;
-    while (set[j])
-        {
-          if (s1[i] == set[j])
-            cmpt++;        
-          j++;
-        }
-        i++;
-    }
-  j = 0;
-  while (size_s1 > size_set)
-  {
-    j = 0;
-    while (set[j])
-      {
-        if (s1[size_s1] == set[j])
-          cmpt++;
-        j++;
-      }
-    size_s1--;
-  }
-  return (cmpt);
+	int		i;
+
+	i = 0;
+	if (c == '\0')
+		return (1);
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-char    *ft_strtrim(char const *s1, char const *set)
+static int		find_start(char const *s1, char const *set)
 {
-    int     i;
-    int     j;
-    int     k;
-    char    *str;
-    int     size_s1;
+	int		i;
+	int		j;
 
-    i = 0;
-    j = 0;
-    k = 0;
-    size_s1 = s_len(s1);
-    if (!(str = (char *)malloc(sizeof(char) * (s_len(s1) - compt_set(s1, set)) + 1)))
-        return (NULL);
-    while (i < size_s1)
-    {
-        while (set[j])
-        {
-          if (s1[i] == set[j])
-            i++;
-          j++;
-        }
-      str[k] = s1[i];
-      k++;
-      i++;
-    }
-    printf("j = %d\n", j);
-    printf("i = %d\n", i);
-    while (i > 0)
-    {
-        while (j == 0)
-        {
-          if (s1[i] == set[j])
-            i--;
-          j--;
-        }
-      str[k] = s1[i];
-      k++;
-      i--;
-    }
-    return (str);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		if (check_char(s1[i], set) == 0)
+		{
+			return (i);
+		}
+		i++;
+	}
+	return (i);
 }
 
-int        main(void)
+static int		find_end(char const *s1, char const *set)
 {
-    const char    s1[] = {"xoxoTest Stringxoxo"};
-    char        set[] = {"xoxo"};
+	int		i;
+	int		j;
+	int		end;
 
-    printf("return = %d\n",compt_set(s1, set));
-    puts(ft_strtrim(s1, set));
+	i = s_len(s1);
+	j = 0;
+	end = i;
+	while (i > 0)
+	{
+		if (check_char(s1[i], set) == 0)
+		{
+			return (i);
+		}
+		i--;
+	}
+	return (end);
+}
+
+char			*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		len_s1;
+	char	*str;
+
+	i = find_start(s1, set);
+	j = find_end(s1, set);
+	len_s1 = j - i;
+	k = 0;
+	str = NULL;
+	if (!(str = (char *)malloc(sizeof(char) * (len_s1 + 1))))
+		return (NULL);
+	while (i <= j)
+	{
+		str[k] = s1[i];
+		k++;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
