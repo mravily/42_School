@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:46:55 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/10 17:07:13 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/10 17:09:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub = NULL;
 	if (!(sub = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
-	while (j <= len)
+	while (j < len)
 	{
 		sub[j] = s[start];
 		start++;
