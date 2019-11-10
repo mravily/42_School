@@ -64,7 +64,7 @@ static int		find_end(char const *s1, char const *set)
 	i = s_len(s1);
 	j = 0;
 	end = i;
-	while (i >= 0)
+	while (i > 0)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
