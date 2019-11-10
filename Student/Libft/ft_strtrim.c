@@ -68,11 +68,11 @@ static int		find_end(char const *s1, char const *set)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
-			return (i);
+			return (i + 1);
 		}
 		i--;
 	}
-	return (end);
+	return (end + 1);
 }
 
 char			*ft_strtrim(char const *s1, char const *set)
