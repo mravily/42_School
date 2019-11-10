@@ -27,11 +27,11 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);                                 // A VERIFIER //
+char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 // ft_strlcpy //
-size_t	ft_strlcat(char *dest, const char *src, size_t n);                // A VERIFIER //
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n);  // A FINIR //                  
+size_t	ft_strlcat(char *dest, const char *src, size_t n);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n);               
 
 char	*ft_strdup(const char *s);
 void	*calloc(size_t count, size_t size);
@@ -52,6 +52,13 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+// ft_split
+char	*ft_itoa(int n);
+// ft_strmapi
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
+// ft_putnbr_fd
 
 
 void	ft_putchar(char c);
