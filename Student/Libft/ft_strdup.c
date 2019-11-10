@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 
 	i = 0;
 	dup = NULL;
-	if (s[i] == '\0')
+	if (s[i] == '\0' || !s)
 		return (NULL);
 	while (s[i])
 		i++;
