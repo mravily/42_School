@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 19:20:49 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 19:20:49 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/10 11:21:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int		ft_isprint(int c)
 {
-	unsigned char print;
-
-	print = c;
-	if (print >= 32 && print <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

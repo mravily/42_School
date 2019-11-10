@@ -6,31 +6,12 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:15:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/06 17:20:10 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/07 11:56:57 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-
-static int		s_len(char const *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-static int		str_dup(char const *s, char c)
-{
-	int		i;
-	
-	i = 0;
-	while (s[i])
-	return (cmpt_c);
-}
 
 static	int		count_word(char const *s, char c)
 {
@@ -45,44 +26,78 @@ static	int		count_word(char const *s, char c)
 			cmpt_w++;
 		i++;
 	}
-	printf("cmpt_w = %d\n", cmpt_w);
 	return (cmpt_w);
+}
+
+static int		tab_malloc(char **tab, char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		len_word;
+
+	i = 0;
+	j = 0;
+	while (j < count_word(s, c))
+	{
+		len_word = 0;
+		while (s[i] == c)
+			i++;
+		while (s[i] != c && s[i])
+		{
+			len_word++;
+			i++;
+		}
+		if (!(tab[j] = (char *)malloc(sizeof(char) * (len_word + 1))))
+			return (NULL);
+		j++;
+	}
+	tab[j][0] = '\0';
+	return (1);
 }
 
 char			**ft_split(char const *s, char c)
 {
 	int 	i;
-	int		len_str;
+	int 	j;
+	int		k;
 	int		nbr_word;
-	char	**str;
+	char	**tab;
 
 	i = 0;
+	j = 0;
 	nbr_word = count_word(s, c);
-	len_str = (s_len(s) - count_char(s, c)); // len_str = 20
-	if (!(str = (char **)malloc(sizeof(char) * nbr_word)))
+	if (!(tab = (char **)malloc(sizeof(char) * (nbr_word + 1))))
 		return (NULL);
+	tab_malloc(tab, s, c);
 	while (i < nbr_word)
 	{
-		s[]
+		k = 0;
+		while (s[j] == c)
+			j++;
+		while (s[j] != c && s[j])
+		{
+			tab[i][k] = s[j];
+			k++;
+			j++;
+		}
+		tab[i][j] = '\0';
+		i++;
 	}
-	
-	
-int main(void)
+	return (tab);
+}
+
+int		main(void)
 {
-	//char **tab;
+	char **tab;
 	char const s[] = {"*bonjour*coucou*arigato*"};
-	count_char(s, '*');
 	count_word(s, '*');
-	ft_split(s, '*');
-	//tab = ft_split("*bonjour*coucou*arigato*", "*");
-	//int i;
-	//i = 0;
-	//while (tab[i])
-	/*
+	tab = ft_split(s, '*');
+	int i;
+	i = 0;
+	while (tab[i])
 	{
 		printf("%s\n", tab[i]);
 		i++;
 	}
 	printf("%d\n", i);
-	*/
 }

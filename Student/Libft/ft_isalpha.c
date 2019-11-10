@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 10:42:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 10:42:51 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/07 15:36:45 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/10 11:19:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int		ft_isalpha(int c)
 {
-	unsigned char l;
 
-	l = c;
-	if ((l >= 'a' && l <= 'z')||(l >= 'A' && l <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
-	return (0);
+	else
+		return (0);
 }

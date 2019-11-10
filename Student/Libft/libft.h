@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 13:46:21 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/05 14:37:17 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/07 14:35:18 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strchr(const char *s, int c);                                 // A VERI
 char	*ft_strrchr(const char *s, int c);
 // ft_strlcpy //
 size_t	ft_strlcat(char *dest, const char *src, size_t n);                // A VERIFIER //
-char	*ft_strnstr(const char *baystack, const char *needle, size_t n);  // A FINIR //                  
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n);  // A FINIR //                  
 
 char	*ft_strdup(const char *s);
 void	*calloc(size_t count, size_t size);
@@ -52,12 +52,6 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-
-
-
-
-
-
 
 
 void	ft_putchar(char c);
