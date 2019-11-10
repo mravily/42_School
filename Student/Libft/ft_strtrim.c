@@ -82,15 +82,15 @@ char			*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	int		j;
 	int		k;
-	int		len_s1;
+	int		len;
 	char	*str;
 
 	i = find_start(s1, set);
 	j = find_end(s1, set);
-	len_s1 = j - i;
+	len = j - i;
 	k = 0;
 	str = NULL;
-	if (!(str = (char *)malloc(sizeof(char) * (len_s1 + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
 		return (NULL);
 	while (i <= j)
 	{
