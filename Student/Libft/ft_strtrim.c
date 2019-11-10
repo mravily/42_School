@@ -42,8 +42,10 @@ static int		check_char(char c, char const *charset)
 static int		find_start(char const *s1, char const *set)
 {
 	int		i;
+	int		start;
 
 	i = 0;
+	start = 0;
 	while (s1[i])
 	{
 		if (check_char(s1[i], set) == 0)
@@ -52,7 +54,7 @@ static int		find_start(char const *s1, char const *set)
 		}
 		i++;
 	}
-	return (i);
+	return (start);
 }
 
 static int		find_end(char const *s1, char const *set)
@@ -64,7 +66,7 @@ static int		find_end(char const *s1, char const *set)
 	i = s_len(s1);
 	j = 0;
 	end = i;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
