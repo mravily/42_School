@@ -19,20 +19,42 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 
 	i = 0;
 	j = 0;
-	if (needle == NULL)
+		if (needle[j] == '\0')
 		return ((char *)haystack);
-	while (haystack[i] && i < n)
+	while (haystack[i] && needle[j] && i < n)
 	{
-		while (needle[j])
+		while (haystack[i] == needle[j])
 		{
-			if (needle[j] != haystack[i])
+			if (haystack[i] != needle[j])
 				j = 0;
 			j++;
 		}
 		i++;
 	}
-	if (haystack[i] == '\0')
-		return (NULL);
+	if (needle[j] == '\0')
+		return ((char*)haystack + (i - j));
 	else
-		return ((char *)haystack);
+		return (NULL);
+}
+
+
+#include <stdio.h>
+#include <string.h>
+int		main(void)
+{
+	char	*s1 = "see FF your FF return FF now FF";
+	char	*s2 = "FF";
+
+	size_t	max = strlen(s1);
+	char	*i1 = strnstr(s1, s2, max);
+	char	*i2 = ft_strnstr(s1, s2, max);
+
+	if (i1 == i2)
+		printf("TEST_SUCCESS\n");
+	else 
+		printf("TEST_FAILED\n");
+
+	printf("Diff :\n");
+	printf("strnstr = %s\n", strnstr(s1, s2, max));
+	printf("ft_strnstr = %s\n", ft_strnstr(s1, s2, max));
 }
