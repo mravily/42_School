@@ -34,5 +34,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 	if (haystack[i] == '\0')
 		return (NULL);
 	else
-		return ((char *)haystack + (i - j));
+		return ((char *)haystack);
 }
