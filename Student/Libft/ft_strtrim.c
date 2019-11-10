@@ -48,11 +48,11 @@ static int		find_start(char const *s1, char const *set)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
-			return (i - 1);
+			return (i);
 		}
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }
 
 static int		find_end(char const *s1, char const *set)
@@ -68,11 +68,11 @@ static int		find_end(char const *s1, char const *set)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
-			return (i + 1);
+			return (i);
 		}
 		i--;
 	}
-	return (end + 1);
+	return (end);
 }
 
 char			*ft_strtrim(char const *s1, char const *set)
@@ -88,7 +88,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	len = j - i;
 	k = 0;
 	str = NULL;
-	if (!(str = (char *)malloc(sizeof(char) * (len))))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
 		return (NULL);
 	while (i < j)
 	{
