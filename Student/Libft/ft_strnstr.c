@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
 	size_t		i;
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 		return ((char *)haystack);
 	while (haystack[i] && needle[j] && i < n)
 	{
-		while (haystack[i] == needle[j])
+		while (needle[j] == haystack[i])
 		{
 			if (haystack[i] != needle[j])
 				j = 0;
@@ -31,8 +31,25 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 		}
 		i++;
 	}
+	printf("i = %d\n", i);
+	printf("j = %d\n", j);
 	if (needle[j] == '\0')
-		return ((char*)haystack + (i - j) - 1);
+		return ((char*)haystack + i + 1 - j);
 	else
 		return (NULL);
+}
+
+
+#include <stdio.h>
+#include <string.h>
+int		main(void)
+{
+	char	*s1 = "see FF your FF return FF now FF";
+	char	*s2 = "FF";
+
+	size_t	max = strlen(s1);
+	char	*i2 = ft_strnstr(s1, s2, max);
+
+	printf("Diff :\n");
+	printf("ft_strnstr = %s\n", ft_strnstr(s1, s2, max));
 }
