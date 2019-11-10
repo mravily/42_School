@@ -38,8 +38,7 @@ int		ft_atoi(const char *nptr)
 		res = res * 10 + (nptr[i] - '0');
 		i++;
 	}
-	if (res > -2147483648 || res > 2147483647)
-		return (-1);
+	
 	if (cmpt_neg == 1)
 		return (-res);
 	if (cmpt_pos == 1 || cmpt_pos == 0)
