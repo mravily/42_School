@@ -87,12 +87,12 @@ char			*ft_strtrim(char const *s1, char const *set)
 
 	i = find_start(s1, set);
 	j = find_end(s1, set);
-	len = j - i + 1;
+	len = j - i;
 	k = 0;
 	str = NULL;
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (i < j)
+	while (i < j + 1)
 	{
 		str[k] = s1[i];
 		k++;
