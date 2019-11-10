@@ -31,15 +31,11 @@ int		ft_atoi(const char *nptr)
 			cmpt_pos++;
 		i++;
 	}
-	printf("2nd i = %d\n", i);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		res = res * 10 + (nptr[i] - '0');
 		i++;
 	}
-	printf("cmpt_neg = %d\n", cmpt_neg);
-	printf("cmpt_pos = %d\n", cmpt_pos);
-	
 	if (cmpt_neg == 1)
 		return (-res);
 	if (cmpt_pos == 1 || cmpt_pos == 0)
