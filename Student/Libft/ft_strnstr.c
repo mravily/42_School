@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 		i++;
 	}
 	if (needle[j] == '\0')
-		return ((char*)haystack);
+		return ((char*)haystack + (i - j));
 	else
 		return (NULL);
 }
