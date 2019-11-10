@@ -53,9 +53,3 @@ char	*ft_itoa(int n)
 	str[size] = '\0';
 	return (str);
 }
-
-int		main(void)
-{
-	unsigned int n = {-6518};
-	printf("return = %s",ft_itoa(n));
-}

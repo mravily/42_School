@@ -49,21 +49,3 @@ int		ft_atoi(const char *nptr)
 	else 
 		return (0);
 }
-
-#include <stdio.h>
-int		main(void)
-{
-	const char nptr[]= {"+-53486"};
-	int i1 = atoi(nptr);
-	int i2 = ft_atoi(nptr);
-	printf("\n");
-	if (i1 == i2)
-		printf("TEST_SUCCESS\n");
-	else
-		printf("TEST_FAILED\n");
-	printf("\n");
-	printf("Diff :\n");
-	printf("atoi = %d\n", i1);
-	printf("ft_atoi = %d\n", i2);
-
-}
