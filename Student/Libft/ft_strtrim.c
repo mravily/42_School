@@ -48,11 +48,11 @@ static int		find_start(char const *s1, char const *set)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
-			return (i);
+			return (i + 1);
 		}
 		i++;
 	}
-	return (i);
+	return (i + 1);
 }
 
 static int		find_end(char const *s1, char const *set)
