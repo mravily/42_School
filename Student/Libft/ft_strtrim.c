@@ -66,7 +66,7 @@ static int		find_end(char const *s1, char const *set)
 	i = s_len(s1);
 	j = 0;
 	end = i;
-	while (i >= 0)
+	while (i > 0)
 	{
 		if (check_char(s1[i], set) == 0)
 		{
@@ -92,7 +92,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	str = NULL;
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (i < j)
+	while (i <= j)
 	{
 		str[k] = s1[i];
 		k++;
