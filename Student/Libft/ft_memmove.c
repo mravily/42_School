@@ -16,6 +16,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char	*tmp;
 
+	tmp = NULL;
 	if (!dst || !src ||dst == 0 || src == 0)
 		return (NULL);
 	ft_memcpy(tmp, src, n);
