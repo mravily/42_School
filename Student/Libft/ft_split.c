@@ -42,7 +42,7 @@ static char		**put_word(int nbr_word, char **tab, char const *s, char c)
 	while (s[i] && count < nbr_word)
 	{
 		j = 0;
-		while (s[i] == c && s[i] != 0)
+		while (s[i] == c)
 			i++;
 		while (s[i] != c)
 		{
