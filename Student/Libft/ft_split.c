@@ -86,17 +86,3 @@ char	**ft_split(char const *s, char c)
 	put_word(nbr_word, tab, s, c);
 	return (tab);
 }
-
-#include <stdio.h>
-int		main(void)
-{
-	const char	*s = "                  olol";
-	char **tab;
-	//char const s[] = {"*bonjour*coucou*arigato*"};
-	tab = ft_split(s, ' ');
-	int i;
-	i = 0;
-	while (tab[i])
-		printf("%s\n", tab[i++]);
-		i++;
-}
