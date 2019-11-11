@@ -42,12 +42,11 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 
-
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
 char	*ft_strstr(const char *baystack, const char *needle);
-char	*ft_strncpy(char *dest, const char *src, size_t n);
+
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -62,5 +61,6 @@ void	ft_putstr_fd(char *s, int fd);
 
 
 void	ft_putchar(char c);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 #endif
