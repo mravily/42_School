@@ -11,93 +11,74 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static	int		count_word(char const *s, char c)
+static int		count_word(char const *s, char c)
 {
 	int i;
-	int cmpt_w;
+	int nbr_w;
 
 	i = 0;
-	cmpt_w = 0;
+	nbr_w = 0;
+	while (s[i] == c)
+		i++;
 	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] == c)
-			cmpt_w++;
+		if (s[i] == c && s[i + 1] != c)
+			nbr_w++;
 		i++;
 	}
-	return (cmpt_w);
+	return (nbr_w);
 }
 
-static int		tab_malloc(char **tab, char const *s, char c)
+static char		**put_word(int nbr_word, char **tab, char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		len_word;
+	int i;
+	int j;
+	int count;
 
 	i = 0;
 	j = 0;
-	while (j < count_word(s, c))
+	count = 0;
+	while (s[i] && count < nbr_word)
 	{
-		len_word = 0;
-		while (s[i] == c)
+		j = 0;
+		while (s[i] == c && s[i] != 0)
 			i++;
-		while (s[i] != c && s[i])
+		while (s[i] != c)
 		{
-			len_word++;
+			tab[count][j] = s[i];
+			j++;
 			i++;
 		}
-		if (!(tab[j] = (char *)malloc(sizeof(char) * (len_word + 1))))
-			return (NULL);
-		j++;
-	}
-	tab[j][0] = '\0';
-	return (1);
-}
-
-char			**ft_split(char const *s, char c)
-{
-	int 	i;
-	int 	j;
-	int		k;
-	int		nbr_word;
-	char	**tab;
-
-	i = 0;
-	j = 0;
-	nbr_word = count_word(s, c);
-	if (!(tab = (char **)malloc(sizeof(char) * (nbr_word + 1))))
-		return (NULL);
-	tab_malloc(tab, s, c);
-	while (i < nbr_word)
-	{
-		k = 0;
-		while (s[j] == c)
-			j++;
-		while (s[j] != c && s[j])
-		{
-			tab[i][k] = s[j];
-			k++;
-			j++;
-		}
-		tab[i][j] = '\0';
-		i++;
+		tab[count][j] = '\0';
+		count++;
 	}
 	return (tab);
 }
 
-int		main(void)
+char	**ft_split(char const *s, char c)
 {
-	char **tab;
-	char const s[] = {"*bonjour*coucou*arigato*"};
-	count_word(s, '*');
-	tab = ft_split(s, '*');
-	int i;
+	char	**tab;
+	int		i;
+	int		k;
+	int		len_word;
+	int		nbr_word;
+
+	nbr_word = count_word(s, c);
+	if (!(tab = (char **)malloc(sizeof(char *) * nbr_word)))
+		return (NULL);
 	i = 0;
-	while (tab[i])
+	k = 0;
+	len_word = 0;
+	while (k < nbr_word)
 	{
-		printf("%s\n", tab[i]);
-		i++;
+		while (s[++i] == c)
+		while (s[i++] != c)
+			len_word++;
+		if (!(tab[k] = (char *)malloc(sizeof(char) * (len_word + 1))))
+			return (NULL);
+		k++;
 	}
-	printf("%d\n", i);
+	tab[k] = NULL;
+	put_word(nbr_word, tab, s, c);
 }

@@ -89,6 +89,8 @@ char			*ft_strtrim(char const *s1, char const *set)
 	j = find_end(s1, set);
 	len = j - i;
 	k = 0;
+	if (set == 0)
+		return (NULL);
 	str = NULL;
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
