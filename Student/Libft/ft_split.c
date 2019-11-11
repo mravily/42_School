@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 static int		count_word(char const *s, char c)
 {
 	int i;
@@ -21,12 +21,15 @@ static int		count_word(char const *s, char c)
 	nbr_w = 0;
 	while (s[i] == c)
 		i++;
+	printf("1st i = %d\n", i);
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i - 1] == c && s[i] != c)
 			nbr_w++;
 		i++;
 	}
+	printf("2nd i = %d\n", i);
+	printf("nbr_word = %d\n", nbr_w);
 	return (nbr_w);
 }
 
@@ -82,4 +85,18 @@ char	**ft_split(char const *s, char c)
 	tab[k] = NULL;
 	put_word(nbr_word, tab, s, c);
 	return (tab);
+}
+
+#include <stdio.h>
+int		main(void)
+{
+	const char	*s = "                  olol";
+	char **tab;
+	//char const s[] = {"*bonjour*coucou*arigato*"};
+	tab = ft_split(s, ' ');
+	int i;
+	i = 0;
+	while (tab[i])
+		printf("%s\n", tab[i++]);
+		i++;
 }
