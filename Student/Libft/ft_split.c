@@ -81,4 +81,5 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[k] = NULL;
 	put_word(nbr_word, tab, s, c);
+	return (tab);
 }
