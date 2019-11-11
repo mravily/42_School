@@ -24,7 +24,7 @@ static int		count_word(char const *s, char c)
 	printf("1st i = %d\n", i);
 	while (s[i])
 	{
-		if (s[i - 1] == c && s[i] != c)
+		if ((s[i - 1] == c && s[i] != c) || (s[i] == c && s[i + 1] != c))
 			nbr_w++;
 		i++;
 	}
