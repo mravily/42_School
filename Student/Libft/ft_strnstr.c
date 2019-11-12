@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_haystacknhaystack.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 19:41:23 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/07 14:43:25 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/12 15:48:07 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/12 15:48:17 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
 	size_t i;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 05:41:49 by marvin            #+#    #+#             */
-/*   Updated: 2019/11/08 05:41:49 by marvin           ###   ########.fr       */
+/*   Created: 2019/11/12 15:29:02 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/12 15:29:05 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 static int		get_nb_size(unsigned int nb)
 {
@@ -25,19 +25,18 @@ static int		get_nb_size(unsigned int nb)
 	return (size + 1);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char 			*str;
+	char			*str;
 	unsigned int	nbr;
 	unsigned int	size;
-	unsigned int 	i;
-	printf("n = %d\n", n);
+	unsigned int	i;
+
 	i = 0;
 	if (n < 0)
-		nbr = (unsigned int)(n * -1);
+		nbr = (unsigned int)(n * (-1));
 	else
 		nbr = (unsigned int)n;
-	printf("nbr = %d\n", nbr);
 	size = (unsigned int)get_nb_size(nbr);
 	if (!(str = (char *)malloc(sizeof(char) * (size + 1 + ((n < 0 ? 1 : 0))))))
 		return (NULL);

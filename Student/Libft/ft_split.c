@@ -6,12 +6,12 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:15:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/07 11:56:57 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/12 16:20:27 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 static int		count_word(char const *s, char c)
 {
 	int i;
@@ -22,16 +22,14 @@ static int		count_word(char const *s, char c)
 	if (s[0] == '\0')
 		return (0);
 	if (s[0] == c)
-	nbr_w = 0;
-	while (s[i]) 
+		nbr_w = 0;
+	while (s[i])
 	{
 		if (s[i] == c)
 			if (s[i + 1] != '\0' && s[i + 1] != c)
 				nbr_w++;
 		i++;
 	}
-	printf("2nd i = %d\n", i);
-	printf("nbr_word = %d\n", nbr_w);
 	return (nbr_w);
 }
 
@@ -61,23 +59,19 @@ static char		**put_word(int nbr_word, char **tab, char const *s, char c)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+static char		**ft_tab_alloc(int nbr_word, char **tab, char c, char const *s)
 {
-	char	**tab;
 	int		i;
 	int		k;
 	int		len_word;
-	int		nbr_word;
 
-	nbr_word = count_word(s, c);
-	if (!(tab = (char **)malloc(sizeof(char *) * nbr_word)))
-		return (NULL);
 	i = 0;
 	k = 0;
 	len_word = 0;
 	while (k < nbr_word)
 	{
-		while (s[++i] == c)
+		while (s[i] == c)
+			i++;
 		while (s[i++] != c)
 			len_word++;
 		if (!(tab[k] = (char *)malloc(sizeof(char) * (len_word + 1))))
@@ -85,6 +79,20 @@ char	**ft_split(char const *s, char c)
 		k++;
 	}
 	tab[k] = NULL;
+	return (tab);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**tab;
+	int		nbr_word;
+
+	if (!s)
+		return (NULL);
+	nbr_word = count_word(s, c);
+	if (!(tab = (char **)malloc(sizeof(char *) * nbr_word)))
+		return (NULL);
+	ft_tab_alloc(nbr_word, tab, c, s);
 	put_word(nbr_word, tab, s, c);
 	return (tab);
 }

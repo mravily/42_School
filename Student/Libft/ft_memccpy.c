@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:14:02 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 12:47:05 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/12 15:35:34 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	unsigned i;
-	unsigned char *tmp1;
-	unsigned char *tmp2;
+	unsigned int		i;
+	unsigned char		*tmp1;
+	unsigned char		*tmp2;
 
 	i = 0;
 	tmp1 = (unsigned char *)dest;

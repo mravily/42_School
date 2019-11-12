@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:27:12 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/07 15:34:46 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/12 16:41:55 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 int		ft_tolower(int c)
 {
-	unsigned char	l;
-
-	l = c;
 	if (c >= 'A' && c <= 'Z')
-		return (l + 32);
-	else
-		return (c);
+		c += 32;
+	return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:57:08 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/05 13:35:02 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/12 15:22:04 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned int	i;
-	unsigned char 	*s2;
+	unsigned char	*s2;
 
 	i = 0;
 	s2 = s;

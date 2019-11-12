@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 11:26:12 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:41 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/12 15:32:46 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	tmp = (unsigned char *)s;
 	while (n--)
 	{
-		if (*tmp != (unsigned char )c)
+		if (*tmp != (unsigned char)c)
 			tmp++;
 		else
 			return (tmp);
