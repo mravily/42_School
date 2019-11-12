@@ -18,13 +18,16 @@ static int		count_word(char const *s, char c)
 	int nbr_w;
 
 	i = 0;
+	nbr_w = 1;
+	if (s[0] == '\0')
+		return (0);
+	if (s[0] == c)
 	nbr_w = 0;
 	while (s[i]) 
 	{
-		while (s[i] == c)
-			i++;
-		if ((s[i] != c || s[i - 1] == c ) && (s[i] != c || s[i + 1] == c) && s[i] != '\0')
-            nbr_w++;
+		if (s[i] == c)
+			if (s[i + 1] != '\0' && s[i + 1] != c)
+				nbr_w++;
 		i++;
 	}
 	printf("2nd i = %d\n", i);
@@ -84,19 +87,4 @@ char	**ft_split(char const *s, char c)
 	tab[k] = NULL;
 	put_word(nbr_word, tab, s, c);
 	return (tab);
-}
-
-#include <stdio.h>
-int		main(void)
-{
-	char **tab;
-	//char const s[] = {"*bonjour*coucou*arigato*"};
-	//const char	*s = "                  olol";
-	const char	*s = "olol                  ";
-	tab = ft_split(s, ' ');
-	int i;
-	i = 0;
-	while (tab[i])
-		printf("%s\n", tab[i++]);
-		i++;
 }
