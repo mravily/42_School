@@ -20,6 +20,7 @@
 typedef struct	s_list
 {
 	void			*content;
+	struct s_list	*first;
 	struct s_list	*next;
 }				t_list;
 
@@ -65,5 +66,12 @@ void			ft_putnbr_fd(int i, int fd);
 
 void			ft_putchar(char c);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
+
+/* -> BONUS ---------------------------------------------------------------- */
+
+t_list			*ft_lstnew(void *content);
+void			ft_lstadd_front(t_list **alst,t_list *new);
+int				ft_lstsize(t_list *lst);
+
 
 #endif
