@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:27:59 by marvin            #+#    #+#             */
-/*   Updated: 2019/11/12 20:27:59 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/13 15:34:44 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 int		ft_lstsize(t_list *lst)
 {
-	int		size;
+	size_t		size;
 
 	size = 0;
+	if (lst == NULL)
+		return (0);
 	while (lst != NULL)
 	{
-		lst = lst->next;
 		size++;
+		lst = lst->next;
 	}
+	return (size);
 }
-
-Function name ft_lstsize
-Prototype int ft_lstsize(t_list *lst);
-Fichiers de rendu -
-Paramètres #1. Le début de la liste.
-Valeur de retour Taille de la liste.
-Fonctions externes autorisées
-None
-Description Compte le nombre d’éléments de la liste.

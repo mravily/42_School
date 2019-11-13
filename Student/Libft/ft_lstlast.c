@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 21:38:17 by marvin            #+#    #+#             */
-/*   Updated: 2019/11/12 21:38:17 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/13 16:23:33 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Function name ft_lstlast
-Prototype t_list *ft_lstlast(t_list *lst);
-Fichiers de rendu -
-Paramètres #1. Le début de la liste.
-Valeur de retour Dernier élément de la liste
-Fonctions externes autorisées
-None
-Description Renvoie le dernier élément de la liste.
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	if (lst->next == NULL)
+		return (lst);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
