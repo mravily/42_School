@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 13:46:21 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/13 19:41:22 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/14 20:14:54 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-/* -> 1st PART --------------------------------------------------------------- */
-
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -39,38 +37,41 @@ char			*ft_strrchr(const char *s, int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t			ft_strlcpy(char	*dest, const char *src, size_t size);
 size_t			ft_strlcat(char *dest, const char *src, size_t n);
+char			*ft_strstr(const char *haystack, const char *needle);
 char			*ft_strnstr(const char *haystack, const char *needle, size_t n);
 
 char			*ft_strdup(const char *s);
-void			*calloc(size_t count, size_t size);
+void			*ft_calloc(size_t count, size_t size);
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_toupper(int c);
+int				ft_tolower(int c);
+
+int				ft_atoi(const char *str);
 
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strcat(char *dest, const char *src);
 char			*ft_strncat(char *dest, const char *src, size_t n);
 char			*ft_strstr(const char *haystack, const char *needle);
 
-/* -> 2nd PART --------------------------------------------------------------- */
-
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
+char			**ft_split_test(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
+void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int i, int fd);
 
 void			ft_putchar(char c);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
-
-/* -> BONUS ----------------------------------------------------------------- */
 
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **alst, t_list *new);

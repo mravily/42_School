@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 19:05:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/13 19:09:51 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:16:15 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst == NULL || !f)
+	if (!lst || !f)
 		return ;
 	while (lst)
 	{

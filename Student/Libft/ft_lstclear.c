@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:36:35 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/13 19:02:58 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:14:56 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
 
-	if (lst == NULL || !del)
+	if (!lst || !del)
 		return ;
 	tmp = *lst;
 	while (tmp != NULL)
@@ -26,5 +26,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		free(tmp);
 		tmp = *lst;
 	}
-	lst = NULL;
+	*lst = NULL;
 }

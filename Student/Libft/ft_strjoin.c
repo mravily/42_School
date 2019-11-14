@@ -6,47 +6,26 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:53:49 by marvin            #+#    #+#             */
-/*   Updated: 2019/11/12 15:41:36 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:40:24 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_slen(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
+	char	*new_s;
+	size_t	len_s1;
+	size_t	len_s2;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char				*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*join;
-	int		i;
-	int		j;
-	int		len_s;
-
-	i = 0;
-	j = 0;
 	if (!s1 || !s2)
+		return (0);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (!(new_s = malloc(sizeof(char) * (len_s1 + len_s2 + 1))))
 		return (NULL);
-	len_s = (ft_slen(s1) + ft_slen(s2));
-	join = NULL;
-	if (!(join = (char *)malloc(sizeof(char) * len_s)))
-		return (NULL);
-	while (i < len_s)
-	{
-		join[i] = s1[i];
-		if (s1[i] == '\0')
-		{
-			while (s2[j])
-				ft_strcpy(&join[i++], &s2[j++]);
-		}
-		i++;
-	}
-	join[i] = '\0';
-	return (join);
+	ft_memcpy(new_s, s1, len_s1);
+	ft_memcpy(new_s + len_s1, s2, len_s2);
+	new_s[len_s1 + len_s2] = '\0';
+	return (new_s);
 }

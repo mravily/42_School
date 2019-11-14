@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_no_malloc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:15:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/14 19:39:54 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/14 20:11:38 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,37 @@ static int		count_word(char const *s, char c)
 	return (nbr_w);
 }
 
-static char		**ft_tab_alloc(char **tab, char c, char const *str)
+static char		**ft_tab_alloc(char **tab, char c, char *str)
 {
 	size_t	nb_word;
-	int		value[3];
+	int		i;
 	char	find;
 
 	find = 1;
-	value[2] = 0;
+	i = 0;
 	nb_word = 0;
-	while (str[value[2]] != '\0')
+	while (str[i] != '\0')
 	{
-		if (find == 1 && str[value[2]] != '\0' && str[value[2]] != c)
+		if (find == 1 && str[i] != '\0' && str[i] != c)
 		{
+			printf("Here with word : %d -> %c\n", i, str[i]);
 			find = 0;
-			value[0] = value[2];
+			tab[nb_word] = &(str[i]);
 		}
-		if (find == 0 && (str[value[2] + 1] == '\0' || str[value[2] + 1] == c))
+		if (find == 0 && str[i] == c)
 		{
-			find = 1;
-			value[1] = value[2] + 1;
-			tab[nb_word] = ft_substr(str, value[0], value[1] - value[0]);
+			str[i] = '\0';
+			printf("Word done : %s\n", tab[nb_word]);
 			nb_word++;
+			find = 1;
 		}
-		value[2]++;
+		i++;
 	}
 	tab[nb_word] = NULL;
 	return (tab);
 }
 
-char			**ft_split(char const *s, char c)
+char			**ft_split_no_malloc(char *s, char c)
 {
 	char	**tab;
 	int		nbr_word;
@@ -76,3 +77,4 @@ char			**ft_split(char const *s, char c)
 		return (NULL);
 	return (tab);
 }
+
