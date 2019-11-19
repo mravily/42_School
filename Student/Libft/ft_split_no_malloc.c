@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:15:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/14 20:11:38 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/19 08:24:21 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,12 @@ static char		**ft_tab_alloc(char **tab, char c, char *str)
 	{
 		if (find == 1 && str[i] != '\0' && str[i] != c)
 		{
-			printf("Here with word : %d -> %c\n", i, str[i]);
 			find = 0;
 			tab[nb_word] = &(str[i]);
 		}
 		if (find == 0 && str[i] == c)
 		{
 			str[i] = '\0';
-			printf("Word done : %s\n", tab[nb_word]);
 			nb_word++;
 			find = 1;
 		}
@@ -77,4 +75,3 @@ char			**ft_split_no_malloc(char *s, char c)
 		return (NULL);
 	return (tab);
 }
-

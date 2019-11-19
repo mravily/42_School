@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 19:20:00 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/13 20:31:55 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/19 11:29:09 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	t_list	*current;
 
-	if (!lst)
+	if (!lst || !f || !del)
 		return (NULL);
 	current = lst;
 	if (!(first = ft_lstnew(f(current->content))))

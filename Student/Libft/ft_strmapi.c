@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 06:08:13 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/12 15:42:01 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/19 11:27:06 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	len_s;
 	char			*map;
 
-	if (!s)
+	if (!s || !f)
 		return (NULL);
 	i = 0;
 	len_s = ft_strlen(s);
