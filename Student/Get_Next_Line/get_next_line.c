@@ -1,36 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/19 19:59:01 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/19 20:05:00 by mravily          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-int		get_next_line(int fd, char **line)
+static int		check_backslash_n(char *buf)
 {
-	char			buf[BUFFER_SIZE + 1];
-	int				test;
-	int				i;
+	size_t	i;
 
-	if (fd < 0 || !line)
-		return (-1);
-	test = read(fd, buf, BUFFER_SIZE);
-	buf[test] = '\0';
-	printf("test = %d\n", test);
 	i = 0;
-	while (buf[i])
+	while (buf[i] != '\n' && buf[i])
 	{
-		printf("%c", buf[i]);
+		if (buf[i] == '\n')
+			return (i);
 		i++;
 	}
+	return (-1);
 }
 
-int        main(void)
+int				get_next_line(int fd, char **line)
 {
-    int res;
-    char *line;
-    int fd;
-
-	line = NULL;
-    fd = open("test.txt", O_RDONLY);
-	printf("open = %d\n", fd);
-   	res = get_next_line(fd, &line);
-   // printf("%d | %s\n", res, line);
-    free(*line);
-    close(fd);
-    return (0);
+	char			buf[BUFFER_SIZE + 1]
+	static char		*rest;
+	int				ret;
+	
 }
