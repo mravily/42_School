@@ -44,14 +44,9 @@ int		get_next_line(int fd, char **line)
 	}
 	*line =  ft_strdup(rest);
 	free(rest);
-	rest = NU
+	rest = NULL;
 	return (ret);
-	printf("ft_strlen = %d\n", ft_strlen_backslash(buf));
-	printf("ret = %d\n", ret);
-	i = 0;
-	//buf[268] = '\0';
-	
-	printf("buf[i] = %c", buf[0]);
+
 
 }
 
