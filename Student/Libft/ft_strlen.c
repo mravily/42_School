@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 13:48:04 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/01 13:48:04 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/20 18:13:33 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned int len;
+	size_t len;
 
 	len = 0;
 	while (s[len])

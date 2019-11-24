@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:23:00 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/12 15:23:17 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/21 10:02:30 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int		ft_atoi(const char *str)
 {
-	int		i;
-	int		sign;
-	int		val;
+	int		s;
+	int		stk;
 
-	sign = 1;
-	val = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 8 && str[i] <= 13))
-		i++;
-	while ((str[i] == '-' || str[i] == '+') && (str[i + 1] >= '0'
-		&& str[i + 1] <= '9'))
+	stk = 0;
+	s = 1;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\v'
+		|| *str == '\t' || *str == '\f' || *str == '\r'))
+		str++;
+	if (*str == '-')
+		s = -1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		stk *= 10;
+		stk += *str - '0';
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		val = val * 10 + (str[i++] - 48);
-	return (val * sign);
+	return (stk * s);
 }

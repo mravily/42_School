@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:29:02 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/12 15:29:05 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/21 09:44:17 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char			*ft_itoa(int n)
 		str[i--] = (char)(nbr % 10 + '0');
 		nbr /= 10;
 	}
-	str[i] = (char)(nbr % 10 + '0');
+	str[i] = (char)(nbr + '0');
 	str[size] = '\0';
 	return (str);
 }

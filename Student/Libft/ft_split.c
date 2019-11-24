@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:15:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/14 19:39:54 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/21 09:54:54 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char			**ft_split(char const *s, char c)
 	char	**tab;
 	int		nbr_word;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	nbr_word = count_word(s, c);
 	if (!(tab = (char **)malloc(sizeof(char *) * (nbr_word + 1))))

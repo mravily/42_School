@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 12:06:10 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/23 18:47:26 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/23 12:43:20 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/23 13:46:39 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF
+# define FT_PRINTF
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+# define TRUE 1
+# define FALSE 0
+# define LEFT 1
+# define RIGHT 0
+# define ERROR -1
+
+typedef struct 	s_box
 {
-	unsigned char	*tmp1;
-	unsigned char	*tmp2;
+		int	n_character_display;
+	
+}				t_tool_box;
 
-	if ((!dst && !src) || (dst == src))
-		return (dst);
-	tmp1 = (unsigned char *)dst;
-	tmp2 = (unsigned char *)src;
-	while (n--)
-		tmp1[n] = tmp2[n];
-	return (dst);
-}
+int		ft_printf(const char *format, ...);
+
+#endif

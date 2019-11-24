@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:12:48 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/07 14:52:29 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/24 14:13:00 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 char	*ft_strdup(const char *s)
 {
+	size_t	i;
+	size_t	len_s;
 	char	*dup;
 
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
+	i = 0;
+	dup = 0;
+	len_s = ft_strlen(s);
+	if (!(dup = (char *)malloc(sizeof(char) * (len_s + 1))))
 		return (NULL);
-	else
-		return (ft_strcpy(dup, s));
+	while (i < len_s)
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

@@ -6,78 +6,86 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:59:01 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/19 20:05:00 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/23 17:11:32 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		check_backslash_n(char *buf)
+static int		check_backslash_n(char *buf, char *rest)
 {
-	int		i;
+	size_t			i;
+	size_t			len_rest;
 
 	i = 0;
-	while (buf[i])
+	len_rest = 0;
+	if (rest[0] == '\n')
+		return (len_rest);
+	while (rest[len_rest] != '\n' && rest[len_rest])
+		len_rest++;
+	while (buf[i] || rest[len_rest] == '\n')
 	{
-		printf("buf[%d] = %c\n", i, buf[i]);
-		if (buf[i] == '\n')
-			return (i);
+		if (buf[i] == '\n' || rest[len_rest] == '\n')
+			return (len_rest);
 		i++;
 	}
 	return (-1);
 }
 
+static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
+{
+	char	*tmp;
+	int 	i;
+
+	ret = 0;
+	if (ret == 0 && check_backslash_n(buf, rest) != -1)
+	{
+		i = check_backslash_n(buf, rest);
+		rest[i] = '\0';
+		*line = ft_strdup(rest);
+		tmp = ft_strdup(rest + (i + 1));
+		free(rest);
+		rest = tmp;
+		free(rest);
+		return (1);
+	}
+	else
+	{
+		*line = ft_strdup(rest);
+		free(rest);
+		rest = NULL;
+		return (0);
+	}
+}
+
 int				get_next_line(int fd, char **line)
 {
 	char			buf[BUFFER_SIZE + 1];
-	static char		*rest;
-	int				ret;
+	static char		*rest = NULL;
 	int				i;
+	int				ret;
 	char			*tmp;
-	
-	//ret = 1;
-	rest = NULL;
+
 	if (fd < 0 || !line)
 		return (-1);
-	while (ret = read(fd, buf, BUFFER_SIZE) > 0)
+		while ((ret = read(fd, buf, BUFFER_SIZE)) > 0 ||
+		check_backslash_n(buf, rest) != -1)
 	{
-		//printf("w_ret = %d\n", ret);
-		rest = ft_strjoin(rest, buf);			// ABCDEFGHIJ\nKLMNO
-		i = check_backslash_n(buf);
-		printf("i = %d | rest = %s\n", i, rest);
-		if (i > 0)
+		buf[ret] = '\0';
+		rest = ft_strjoin(rest, buf);
+		i = check_backslash_n(buf, rest);
+		if (i >= 0)
 		{
-			puts("ENTER CONDITION\n");
-			printf("rest = %s | i = %d\n", i, rest);
 			rest[i] = '\0';
-			*line = ft_strdup(rest);			// ABCDEFGHIJ\0
-			printf("i = %d | line = %s\n", i, *line);
-			tmp = ft_strdup(rest + (i + 1));		// KLMNO\0
-			printf("tmp = %s", tmp);
-			free(rest);							// rest = NULL;
-			rest = tmp;							// rest = KLMNO\0
-			printf("rest = %c", rest);
+			*line = ft_strdup(rest);
+			tmp = ft_strdup(rest + (i + 1));
+			free(rest);
+			rest = tmp;
 			return (1);
 		}
 	}
-	*line = ft_strdup(rest);
-	free(rest);
-	rest = NULL;
-	return (ret);
-}
-
-int        main(void)
-{
-    int res;
-    char *line;
-    int fd;
-
-	line = NULL;
-    fd = open("test.txt", O_RDONLY);
-	printf("open = %d\n", fd);
-   	res = get_next_line(fd, &line);
-    ("%d | %s\n", res, line);
-    free(line);
-    close(fd);
-    return (0);
+	if (cpy_lastline(ret, buf, rest, line) == 1)
+		return (1);
+	else
+		return (0);
 }

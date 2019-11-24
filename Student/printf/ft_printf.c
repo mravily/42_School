@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 14:36:02 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/24 14:09:58 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/23 12:14:58 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/23 14:40:23 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+
+int		ft_printf(const char *format, ...)
 {
-	size_t len_dest;
-	size_t len_src;
-	size_t j;
-	size_t i;
+	va_list		ap;
+	t_tool_box	*t_box;
+	size_t		i;
 
-	if (!dest || !src)
-		return (0);
-	len_dest = ft_strlen(dest);
-	len_src = ft_strlen(src);
-	i = len_dest;
-	j = 0;
-	if (size <= len_dest)
-		return (len_src + size);
-	while (src[j] && i < (size - 1))
+	if (!(t_box = (t_tool_box*)malloc(sizeof(t_tool_box))))
+		return (ERROR);
+	va_start(ap, format);
+	i = 0;
+	while (format[i])
 	{
-		dest[i] = src[j];
+		if (format[i] == '%')
+		{
+			i++;
+			check_input(format, );
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			t_box->n_character_display++;
+		}
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
-	return (len_dest + len_src);
+	return (t_box->n_character_display);
 }

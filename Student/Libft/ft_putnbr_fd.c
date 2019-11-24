@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 06:23:12 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/12 15:39:02 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/20 20:51:24 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	else
 	{
-		ft_putchar_fd(nb + 48, fd);
+		ft_putchar_fd(nb % 10 + 48, fd);
 	}
 }
