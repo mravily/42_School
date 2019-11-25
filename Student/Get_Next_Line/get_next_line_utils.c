@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:55:20 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/23 14:42:16 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/24 16:20:09 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void		*ft_memcpy(void *dst, const void *src, size_t n)
 char		*ft_strdup(char *s)
 {
 	size_t	i;
+	size_t	len_s;
 	char	*dup;
 
 	i = 0;
-	if (!(dup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	len_s = ft_strlen(s);
+	if (!(dup = (char *)malloc(sizeof(char) * (len_s + 1))))
 		return (NULL);
-	while (i < ft_strlen(s))
+	while (i < len_s)
 	{
 		dup[i] = s[i];
 		i++;
@@ -68,7 +70,7 @@ char		*ft_strjoin(char *s1, char *s2)
 	else if (!s1)
 		return (ft_strdup(s2));
 	else if (!s2)
-		return (s1);
+		return (ft_strdup(s1));
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	if (!(new_s = malloc(sizeof(char) * (len_s1 + len_s2 + 1))))

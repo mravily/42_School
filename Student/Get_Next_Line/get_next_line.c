@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:59:01 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/23 17:11:32 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/24 16:09:41 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ static int		check_backslash_n(char *buf, char *rest)
 static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
 {
 	char	*tmp;
-	int 	i;
+	int		i;
 
-	ret = 0;
-	if (ret == 0 && check_backslash_n(buf, rest) != -1)
+	i = check_backslash_n(buf, rest);
+	if (ret == 0 && i != -1)
 	{
-		i = check_backslash_n(buf, rest);
 		rest[i] = '\0';
 		*line = ft_strdup(rest);
 		tmp = ft_strdup(rest + (i + 1));
@@ -58,7 +57,7 @@ static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
 	}
 }
 
-int				get_next_line(int fd, char **line)
+static int		read_file(int fd, char **line)
 {
 	char			buf[BUFFER_SIZE + 1];
 	static char		*rest = NULL;
@@ -66,10 +65,7 @@ int				get_next_line(int fd, char **line)
 	int				ret;
 	char			*tmp;
 
-	if (fd < 0 || !line)
-		return (-1);
-		while ((ret = read(fd, buf, BUFFER_SIZE)) > 0 ||
-		check_backslash_n(buf, rest) != -1)
+	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0 || i != -1)
 	{
 		buf[ret] = '\0';
 		rest = ft_strjoin(rest, buf);
@@ -84,8 +80,18 @@ int				get_next_line(int fd, char **line)
 			return (1);
 		}
 	}
-	if (cpy_lastline(ret, buf, rest, line) == 1)
+	if (ret == 0 && i != -1)
+		if (cpy_lastline(ret, buf, rest, line) == 1)
+			return (1);
+	return (0);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	static char		*rest = NULL;
+	if (fd < 0 || !line)
+		return (-1);
+	if (read_file(fd, line) == 1)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

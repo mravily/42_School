@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:53:29 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/04 14:05:06 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/25 17:03:39 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strcpy(char *dest, const char *src)
 	int i;
 
 	i = 0;
+	if (!dest || !src)
+		return (NULL);
 	while (src[i])
 	{
 		dest[i] = src[i];

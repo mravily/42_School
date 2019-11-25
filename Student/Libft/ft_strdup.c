@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:12:48 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/24 14:13:00 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/25 17:09:12 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	size_t	len_s;
 	char	*dup;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	dup = 0;
 	len_s = ft_strlen(s);

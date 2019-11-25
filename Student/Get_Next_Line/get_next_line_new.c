@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 17:35:47 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/23 18:35:55 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/24 14:24:39 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		get_next_line(int fd, char **line)
 			}
 			value[0]++;
 		}
+		
 		printf("rest = %s\n", rest);
 		printf("line = %s\n", *line);
 		
