@@ -6,16 +6,16 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:33:37 by tguilbar          #+#    #+#             */
-/*   Updated: 2019/11/29 16:07:21 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/29 16:37:25 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../get_next_line/get_next_line.h"
+#include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	char	*string;
 	int		fd;
@@ -38,6 +38,8 @@ int	main(int ac, char **av)
 	int		fd17;
 	int		ret;
 
+	string = NULL;
+	
 		fd = open("63_line" ,O_RDONLY);
 		fd1 = open("63_line_nl" ,O_RDONLY);
 		fd2 = open("64_line" ,O_RDONLY);
@@ -56,6 +58,7 @@ int	main(int ac, char **av)
 		fd15 = open("over_buffer" ,O_RDONLY);
 		fd16 = open("simple" ,O_RDONLY);
 		fd17 = 42;
+		/*
 		ret = 1;
 		puts("==================== 63_line ===================");
 		while (ret == 1)
@@ -69,6 +72,14 @@ int	main(int ac, char **av)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd1, &string);
+			printf("%d | %s\n", ret, string);
+			free(string);
+		}
+		ret = 1;
+		puts("=================== ERROR_FILE ==================");
+		while (ret == 1)
+		{
+			ret = get_next_line(fd17, &string);
 			printf("%d | %s\n", ret, string);
 			free(string);
 		}
@@ -136,6 +147,7 @@ int	main(int ac, char **av)
 			printf("%d | %s\n", ret, string);
 			free(string);
 		}
+		
 		ret = 1;
 		puts("=================== lorem_ipsum ==================");
 		while (ret == 1)
@@ -168,6 +180,7 @@ int	main(int ac, char **av)
 			printf("%d | %s\n", ret, string);
 			free(string);
 		}
+		*/
 		ret = 1;
 		puts("=================== one_big_fat_line.txt ==================");
 		while (ret == 1)
@@ -176,6 +189,7 @@ int	main(int ac, char **av)
 			printf("%d | %s\n", ret, string);
 			free(string);
 		}
+		/*
 		ret = 1;
 		puts("=================== over_buffer ==================");
 		while (ret == 1)
@@ -192,12 +206,6 @@ int	main(int ac, char **av)
 			printf("%d | %s\n", ret, string);
 			free(string);
 		}
-		ret = 1;
-		puts("=================== ERROR_FILE ==================");
-		while (ret == 1)
-		{
-			ret = get_next_line(fd17, &string);
-			printf("%d | %s\n", ret, string);
-		}
+		*/
 	return (0);
 }
