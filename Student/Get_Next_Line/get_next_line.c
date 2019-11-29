@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:59:01 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/24 16:09:41 by mravily          ###   ########.fr       */
+/*   Updated: 2019/11/29 12:18:29 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static int		check_backslash_n(char *buf, char *rest)
 	return (-1);
 }
 
-static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
+int				cpy_lastline(int ret, char **line, char *rest, char *buf)
 {
-	char	*tmp;
 	int		i;
+	char	*tmp;
 
 	i = check_backslash_n(buf, rest);
 	if (ret == 0 && i != -1)
@@ -44,8 +44,12 @@ static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
 		*line = ft_strdup(rest);
 		tmp = ft_strdup(rest + (i + 1));
 		free(rest);
-		rest = tmp;
+		rest = NULL;
+		rest = ft_strdup(tmp);
 		free(rest);
+		rest = NULL;
+		free(tmp);
+		tmp = NULL;
 		return (1);
 	}
 	else
@@ -57,7 +61,7 @@ static int		cpy_lastline(int ret, char *buf, char *rest, char **line)
 	}
 }
 
-static int		read_file(int fd, char **line)
+int				read_file(int fd, char **line)
 {
 	char			buf[BUFFER_SIZE + 1];
 	static char		*rest = NULL;
@@ -76,22 +80,21 @@ static int		read_file(int fd, char **line)
 			*line = ft_strdup(rest);
 			tmp = ft_strdup(rest + (i + 1));
 			free(rest);
-			rest = tmp;
+			rest = NULL;
+			rest = ft_strdup(tmp);
+			free(tmp);
+			tmp = NULL;
 			return (1);
 		}
 	}
-	if (ret == 0 && i != -1)
-		if (cpy_lastline(ret, buf, rest, line) == 1)
-			return (1);
-	return (0);
+	return (cpy_lastline(ret, line, rest, buf) == 1 ? 1 : 0);
 }
 
 int				get_next_line(int fd, char **line)
 {
-	static char		*rest = NULL;
-	if (fd < 0 || !line)
+	char		buf[BUFFER_SIZE + 1];
+
+	if (fd < 0 || !line || read(fd, buf, 0) < 0)
 		return (-1);
-	if (read_file(fd, line) == 1)
-		return (1);
-	return (0);
+	return (read_file(fd, line) == 1 ? 1 : 0);
 }

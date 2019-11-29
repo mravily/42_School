@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 11:58:51 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/27 19:24:21 by mravily          ###   ########.fr       */
+/*   Created: 2019/11/29 14:03:51 by mravily           #+#    #+#             */
+/*   Updated: 2019/11/29 14:36:10 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+char		*ft_strchr(char *str, int c)
+{
+	size_t		i;
 
-int			get_next_line(int fd, char **line);
-char		*ft_strcpy(char *dest, const char *src);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_strdup(char *s);
-void		*ft_memcpy(void *dest, const void *src, size_t n);
-size_t		ft_strlen(const char *s);
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] == (char)c)
+			return (str[i]);
+		i++;
+	}
+	if (c == '\0')
+		return (str);
+	return (NULL); 
+}
 
-#endif
