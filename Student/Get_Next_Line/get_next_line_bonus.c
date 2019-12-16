@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 17:20:25 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/29 12:20:48 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/02 16:38:54 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ t_multi_fd			*ft_lstadd_back(t_multi_fd *root, t_multi_fd *new)
 	return (new);
 }
 
-int					ft_cpy_lastline(int ret, char **line, t_multi_fd *head,
-	t_multi_fd *root)
+static int					ft_cpy_lastline(int ret, char **line, t_multi_fd *head)
 {
 	char	*tmp;
 
@@ -64,8 +63,7 @@ int					ft_cpy_lastline(int ret, char **line, t_multi_fd *head,
 	}
 }
 
-int					ft_read_file(t_multi_fd *head, char **line,
-	t_multi_fd *root)
+static int					ft_read_file(t_multi_fd *head, char **line)
 {
 	char					buf[BUFFER_SIZE + 1];
 	int						ret;
@@ -86,7 +84,7 @@ int					ft_read_file(t_multi_fd *head, char **line,
 			return (1);
 		}
 	}
-	return (ft_cpy_lastline(ret, line, head, root) == 1 ? 1 : 0);
+	return (ft_cpy_lastline(ret, line, head) == 1 ? 1 : 0);
 }
 
 int					get_next_line(int fd, char **line)
@@ -114,5 +112,5 @@ int					get_next_line(int fd, char **line)
 		root = ft_lstnew(fd);
 		head = root;
 	}
-	return (ft_read_file(head, line, root) == 1 ? 1 : 0);
+	return (ft_read_file(head, line) == 1 ? 1 : 0);
 }

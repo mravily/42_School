@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:55:20 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/28 13:54:28 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/02 13:56:19 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ char		*ft_strjoin(char *s1, char *s2)
 	ft_memcpy(new_s, s1, len_s1);
 	ft_memcpy(new_s + len_s1, s2, len_s2);
 	new_s[len_s1 + len_s2] = '\0';
+	free(s1);
 	return (new_s);
 }

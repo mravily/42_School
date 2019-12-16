@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:59:01 by mravily           #+#    #+#             */
-/*   Updated: 2019/11/29 12:18:29 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/02 14:21:10 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,8 @@ int				cpy_lastline(int ret, char **line, char *rest, char *buf)
 		*line = ft_strdup(rest);
 		tmp = ft_strdup(rest + (i + 1));
 		free(rest);
-		rest = NULL;
-		rest = ft_strdup(tmp);
+		rest = tmp;
 		free(rest);
-		rest = NULL;
-		free(tmp);
-		tmp = NULL;
 		return (1);
 	}
 	else
@@ -80,10 +76,7 @@ int				read_file(int fd, char **line)
 			*line = ft_strdup(rest);
 			tmp = ft_strdup(rest + (i + 1));
 			free(rest);
-			rest = NULL;
-			rest = ft_strdup(tmp);
-			free(tmp);
-			tmp = NULL;
+			rest = tmp;
 			return (1);
 		}
 	}
@@ -94,7 +87,7 @@ int				get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
 
-	if (fd < 0 || !line || read(fd, buf, 0) < 0)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
 		return (-1);
 	return (read_file(fd, line) == 1 ? 1 : 0);
 }
