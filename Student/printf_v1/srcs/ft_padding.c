@@ -36,10 +36,10 @@ void	ft_padding(t_tool_box *t_box, int len_arg)
 		len_pad = t_box->len_padding;
 		sign[0] = (char)' ';
 	}
-	printf("len_arg = %d\n", len_arg);
+	//printf("len_arg = %d\n", len_arg);
 	if (len_pad < 0)
 		len_pad *= (-1);
-	printf("len_pad = %d\n", len_pad);
+	//printf("len_pad = %d\n", len_pad);
 	len_to_display = (len_pad - len_arg);
 	if (len_to_display < 0)
 		len_to_display *= (-1);

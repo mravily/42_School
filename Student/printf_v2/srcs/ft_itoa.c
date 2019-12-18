@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 13:54:35 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/14 00:47:08 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/17 11:29:36 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static long long int				check_n(long long int n, t_tool_box *t_box)
 	{
 		//PRINTPOS;
 		nbr = (long long int)(n * (-1));
-		t_box->arg_neg = TRUE;
 	}
 	else
 	{
@@ -60,11 +59,13 @@ char			*ft_itoa(t_data *data, t_tool_box *t_box)
 		return (NULL);
 	//printf("4rd_nbr = %d\n", nbr);
 	i = 0;
+	/*
 	if (t_box->arg_neg == TRUE && (str[i] = '-'))
 	{
 		//PRINTPOS;
 		size++;
 	}
+	*/
 	i = size - 1;
 	//printf("5th_nbr = %d\n", nbr);
 	while (nbr >= 10)

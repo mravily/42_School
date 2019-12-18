@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:43:47 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/16 14:55:48 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/17 14:20:37 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define LEN_ATX printf("len_astx = %d\n", len_asterix)
 # define LEN_PAD printf("len_padding = %d\n", len_padding)
 # define LEN_PRINT printf("len_print = %d\n", len_to_print)
+# define LEN_FIELD printf("len_field = %d\n", len_field_width)
 
 /* ************************************************** */
 
@@ -49,19 +50,14 @@ typedef struct	s_box
 	int		f_space;
 	int		f_zero;
 	int		f_precis;
-	int		f_asterix;
+	int		f_asterisk;
 	int		f_field_width;
-	int		len_space;
-	int		len_zero;
+	int		len_pad;
 	int		len_precis;
-	int		len_asterix;
-	int		len_field_width;
 	int		c_digit;
+	int		c_char;
 	int		lenght_modif;
 
-	int		flag;
-	int		empty_str;
-	int		arg_neg;
 	int		sign_convert;
 }				t_tool_box;
 
@@ -85,7 +81,7 @@ int			ft_atoi_index(const char *str);
 void		ft_int_len(int nb, size_t *i);
 void		ft_print_arg(t_tool_box *t_box, char *arg);
 char		*ft_printchar(int c);
-char		*ft_printstr(char *str, t_tool_box *t_box);
+char		*ft_printstr(char *str);
 char		*ft_itoa(t_data *data, t_tool_box *t_box);
 char		*ft_convert_value_to_base(t_data *data, char *base, t_tool_box *t_box);
 void		ft_print_arg_addr(t_tool_box *t_box, char *arg);
@@ -94,5 +90,12 @@ void		ft_resize_arg_1(t_data *data, va_list *ap, t_tool_box *t_box);
 size_t		ft_strlen(char *str);
 void		ft_reset_flags(t_tool_box *t_box);
 void		ft_padding(t_tool_box *t_box, int len_arg);
+void		ft_get_padding(t_tool_box *t_box, const char *format, int *i);
+void		ft_print_arg_str(t_tool_box *t_box, char *arg);
+void		ft_padding_right(t_tool_box *t_box, int i, long int len);
+void		ft_padding_left(t_tool_box *t_box, char *arg);
+void		ft_precise_precise(t_tool_box *t_box,
+												char *arg, int i, long int len);
+void		ft_padding_zero(t_tool_box *t_box, char *arg, int len_arg);
 
 #endif
