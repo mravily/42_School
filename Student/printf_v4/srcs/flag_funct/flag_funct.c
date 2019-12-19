@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:10:13 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/19 21:12:13 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/19 21:32:35 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void set_funct_flag_tab(t_flag_funct *funct_flag_ptr)
 	funct_flag_ptr['7'] = handle_numeric_value_flag;
 	funct_flag_ptr['8'] = handle_numeric_value_flag;
 	funct_flag_ptr['9'] = handle_numeric_value_flag;
-	funct_flag_ptr['*'] = handle_numeric_value_flag;
+	funct_flag_ptr['*'] = check_flag_asterisk;
 }
 
 size_t check_flag_point(char *format, size_t index, t_flag *flag)
@@ -80,6 +80,7 @@ size_t check_flag_len_precision(char *format, size_t index, t_flag *flag)
 
 size_t check_flag_asterisk(char *format, size_t index, t_flag *flag)
 {
+	
 	if (flag->point == true)
 		flag->len_precision = va_arg(*(flag->arg), int);
 	else
