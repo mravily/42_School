@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 19:30:36 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/18 13:48:48 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/18 14:50:27 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void		ft_get_padding(t_tool_box *t_box, const char *format, size_t *i)
 {
 	int		nbr;
-
+	int 	tmp;
 	//printf("1st_str = %s\n", format + *i);
 	nbr = ft_atoi_index(format + *i);
+	tmp = nbr;
 	while (ft_isdigit(format[*i]) == 1)
 		(*i)++;
 	//printf("2nd_str = %s\n", format + *i);
@@ -31,5 +32,6 @@ void		ft_get_padding(t_tool_box *t_box, const char *format, size_t *i)
 	else if (t_box->f_precis == TRUE)
 	{
 		t_box->len_precis = nbr;
+		//PRINT_PREC;
 	}
 }

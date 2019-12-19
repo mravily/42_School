@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 01:23:33 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/18 13:33:20 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:03:09 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void			ft_print_precise(t_tool_box *t_box,
 		ft_precise_right_pad(t_box, i, nb_zero, arg);
 	if (arg[0] == '%' && t_box->f_zero == TRUE)
 		ft_padding_zero(t_box, arg, &i);
+	//PRINT_PREC;
 	if (t_box->c_digit == FALSE)
 		while (i < len && i < t_box->len_precis)
 		{
@@ -101,7 +102,7 @@ void			ft_print_precise(t_tool_box *t_box,
 
 	if (t_box->len_pad > 0 && t_box->pad_dir == LEFT)
 	{
-		PRINTPOS;
+		//PRINTPOS;
 		ft_padding_left(t_box, i, len);
 	}
 }

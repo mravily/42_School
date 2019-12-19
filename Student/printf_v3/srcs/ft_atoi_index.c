@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 20:52:07 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/18 00:53:56 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:02:02 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,25 @@
 
 int			ft_atoi_index(const char *str)
 {
-	size_t		i;
-	int			res;
+	unsigned long long	res;
+	unsigned int		sign;
+	unsigned int		i;
 
-	i = 0;
 	res = 0;
-	//PRINTPOS;
+	sign = 1;
+	i = 0;
 	//printf("str = %s\n", str);
-	while (ft_isdigit(str[i]) == 1)
-		res = (str[i++] - '0') + res * 10;
-	return (res);
+	while (*str && (str[0] == ' ' || str[0] == '\n' || str[0] == '\r'
+	|| str[0] == '.' || str[0] == '\t' || str[0] == '\v' || str[0] == '\f'))
+		str++;
+	if (str[0] == '-')
+		sign = -1;
+	if (str[0] == '-' || str[0] == '+')
+		str++;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		res = res * 10 + (str[i++] - '0');
+	if (i > 19 || res >= 9223372036854775808ULL)
+		return (sign == 1 ? -1 : 0);
+	//printf("res = %d\n", res);
+	return (res * sign);
 }

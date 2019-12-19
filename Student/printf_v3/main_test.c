@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/17 19:17:41 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/18 13:41:46 by mravily          ###   ########.fr       */
+/*   Created: 2019/12/18 15:40:09 by mravily           #+#    #+#             */
+/*   Updated: 2019/12/18 16:11:49 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ int		main(void)
 	puts("============================================");
 	puts("================= MIX TEST =================");
 	puts("============================================");
+	puts("=========== TEST MIX NORMAL DIGIT ==========");
 	puts("================== TEST 1 ==================");
-	printf("-- %d --|\n", printf("|%17d LVcGOj2a0d86O|", -2147483647));
-	//                            0123456789 ----- 14 -----
-	ft_printf("-- %d --|\n", ft_printf("|%17d LVcGOj2a0d86O|", -2147483647));
+	printf("-- %d --|\n", printf("|%-5.15d|", -2147483647));
+	//                            0123456789  0123456789
+	//ft_printf("-- %d --|\n", ft_printf("|%-10.5d|", -2147483647));
 	//                                  0123456789
 	puts("================== TEST 2 ==================");
-	printf("-- %d --|\n", printf("|%-*c|", -10, 'o'));
+	printf("-- %d --|\n", printf("|%05.15d|", -2147483647));
 	//                            012345
-	ft_printf("-- %d --|\n", ft_printf("|%-*c|", -10, 'o'));
+	//ft_printf("-- %d --|\n", ft_printf("|%-*c|", -10, 'o'));
+	/*
 	puts("================== TEST 3 ==================");
 	printf("-- %d --|\n", printf("|%-*.0d|", -1, 2147483647));
 	ft_printf("-- %d --|\n", ft_printf("|%-*.0d|", -1, 2147483647));
@@ -46,7 +48,19 @@ int		main(void)
 	printf("-- %d --|\n", printf("|%0xVkgho%20.*sFbhuJYwdx|", 1901203325, -2, ""));
 	ft_printf("-- %d --|\n", ft_printf("|%0xVkgho%20.*sFbhuJYwdx|", 1901203325, -2, ""));
 	//                                 	0123456789
+	puts("================== TEST 8 ==================");
+	printf("-- %d --|\n", printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
+	ft_printf("-- %d --|\n", ft_printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
+	//                                 	0123456789
 
-	
+	puts("================== TEST 9 ==================");
+	printf("-- %d --|\n", printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
+	ft_printf("-- %d --|\n", ft_printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
+	//                                 	0123456789
+	puts("================= TEST 10 ==================");
+	printf("-- %d --|\n", printf("|tJpY%11.3sw20R%%FzDc|", NULL));
+	ft_printf("-- %d --|\n", ft_printf("|tJpY%11.3sw20R%%FzDc|", NULL));
+	//                                	0123456789
+	*/
 	return (0);
 }

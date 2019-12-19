@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 21:21:23 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/18 13:49:18 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/18 19:19:08 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void		ft_check_flags_2(t_tool_box *t_box, const char *format, size_t *i, 
 		t_box->f_asterisk = TRUE;
 		if (t_box->f_precis == TRUE)
 		{
-		//PRINTPOS;
-		t_box->len_precis = va_arg(*ap, int);
-		//PRINT_PREC;
+			//PRINTPOS;
+			t_box->len_precis = va_arg(*ap, int);
+			//PRINT_PREC;
 		}
 		else
 		{
@@ -38,17 +38,26 @@ static void		ft_check_flags_2(t_tool_box *t_box, const char *format, size_t *i, 
 		}
 		//PRINT_IW;
 	}
-	else if (ft_isdigit(format[*i]) == 1 && format[*i - 1] == '%')
+	if (format[*i] == '.')
+	{
+		//PRINTPOS;
+		//PRINT_IW;
+		t_box->f_precis = TRUE;
+		ft_get_padding(t_box, format, i);
+		//PRINT_IW;
+	}
+	
+}
+
+static void		ft_check_flags(t_tool_box *t_box, const char *format, size_t *i, va_list *ap)
+{
+	if (ft_isdigit(format[*i]) == 1 && format[*i - 1] == '%')
 	{
 		//PRINTPOS;
 		//PRINT_IW;
 		ft_get_padding(t_box, format, i);
 		//PRINT_IW;
 	}
-}
-
-static void		ft_check_flags(t_tool_box *t_box, const char *format, size_t *i, va_list *ap)
-{
 	if (format[*i] == '-')
 	{
 		//PRINTPOS;
@@ -58,22 +67,14 @@ static void		ft_check_flags(t_tool_box *t_box, const char *format, size_t *i, va
 		ft_get_padding(t_box, format, i);
 		//PRINT_IW;
 	}
-	else if (format[*i] == '0')
+	if (format[*i] == '0')
 	{
 		t_box->f_zero = TRUE;
 		(*i)++;
 		ft_get_padding(t_box, format, i);
 	}
-	else if (format[*i] == '.')
-	{
-		//PRINTPOS;
-		//PRINT_IW;
-		t_box->f_precis = TRUE;
-		(*i)++;
-		ft_get_padding(t_box, format, i);
-		//PRINT_IW;
-	}
-	ft_check_flags_2(t_box, format, i, ap);
+	else
+		ft_check_flags_2(t_box, format, i, ap);
 }
 
 static void			ft_check_convert_2(const char *format, t_tool_box *t_box,
@@ -81,7 +82,6 @@ va_list *ap, t_data *u_data)
 {
 	if (*format == 'u')
 	{
-		t_box->c_digit = TRUE;
 		ft_resize_arg(u_data, ap, t_box);
 		ft_print_arg(t_box,
 		ft_convert_value_to_base(u_data, "0123456789", t_box));
