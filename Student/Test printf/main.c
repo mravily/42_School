@@ -14,7 +14,6 @@ int main()
 	printf("-- %d --|\n", printf("|%-*c|", -10, 'o'));
 	//                            012345
 	ft_printf("-- %d --|\n", ft_printf("|%-*c|", -10, 'o'));
-	/*
 	puts("================== TEST 3 ==================");
 	printf("-- %d --|\n", printf("|%-*.0d|", -1, 2147483647));
 	ft_printf("-- %d --|\n", ft_printf("|%-*.0d|", -1, 2147483647));
@@ -24,8 +23,8 @@ int main()
 	ft_printf("-- %d --|\n", ft_printf("|hjD%5XuX|", -2147483647));
 	//                                 	0123456789
 	puts("================== TEST 5 ==================");
-	printf("-- %d --|\n", printf("|06 yx%12c%c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
-	ft_printf("-- %d --|\n", ft_printf("|06 yx%12c%c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
+	printf("-- %d --|\n", printf("|06 yx%12c%9c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
+	ft_printf("-- %d --|\n", ft_printf("|06 yx%12c%9c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
 	//                                 	0123456789
 	puts("================== TEST 6 ==================");
 	printf("-- %d --|\n", printf("|%-10.5s%.2d|", "", 1315724962));
@@ -39,7 +38,6 @@ int main()
 	printf("-- %d --|\n", printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
 	ft_printf("-- %d --|\n", ft_printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
 	//                                 	0123456789
-
 	puts("================== TEST 9 ==================");
 	printf("-- %d --|\n", printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
 	ft_printf("-- %d --|\n", ft_printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
@@ -48,6 +46,5 @@ int main()
 	printf("-- %d --|\n", printf("|tJpY%11.3sw20R%%FzDc|", NULL));
 	ft_printf("-- %d --|\n", ft_printf("|tJpY%11.3sw20R%%FzDc|", NULL));
 	//                                 	0123456789
-	*/
 	return (0);
 }

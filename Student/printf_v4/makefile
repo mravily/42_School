@@ -1,73 +1,90 @@
-NAME=		a.out
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mravily <mravily@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/12/12 13:51:23 by mravily           #+#    #+#              #
+#    Updated: 2019/12/21 19:49:26 by mravily          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-##
-##		RESSOURCES
-##
+NAME		= libftprintf.a
 
-##List every folder where he will find header
-INC_DIR = 	$(shell find includes -type d)
-##List every folder where he will find source file
+CC =		gcc
+
 SRC_DIR = 	$(shell find srcs -type d)
-##List every folder where he will find lib file
-LIB_DIR = 	$(shell find ~/.brew/lib -type d)
-##Folder where he will store the .o
-OBJ_DIR	=	obj
+INC_DIR = 	$(shell find includes -type d)
+OBJ_DIR = 	objs
 
-##Add to the vpath the folder find in SRC_DIR
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-##Set the download program to brew
-DWL =		brew
-
-##List every .c found inside SRC_DIR
-SRC = 		$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
-
-##Transform and place every .o from SRC
-OBJ=		$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
-
-##List of libraries to download and install using the function defined in DWL
-LIB_DWN =
-##List of libraries to link while compiling
+# List de toute les library a linker au projet (le nom - le lib et - le .a)
 LIB =
 
-##
-##		COMPILER FLAGS
-##
+#SRC = $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
+SRC =	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
+OBJ = 	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
-##Basics flags
-CFLAGS=		-fsanitize=address -g
+#Compilation flag
+CFLAGS = -Wall -Wextra -Werror
 
-##Create the flags to includes every .h needed by this program
-IFLAGS =	$(foreach dir, $(INC_DIR), -I$(dir)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
+#Include flag
+IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir))
 
-##Create the flags to link every libraries needed by this program (-L and -l)
-LFLAGS = 	$(foreach dir, $(LIB_DIR), -L $(dir) ) $(foreach lib, $(LIB), -l$(lib)) -framework OpenGL
+#Library flag
+LFLAGS = $(foreach lib_dir, $(LIB_DIR), -L $(lib_dir)) $(foreach lib, $(LIB), -l $(lib))
 
-##Define the compiler to use
-CC=			gcc
+# Colors
+_GREY=$'\x1b[30m
+_RED=$'\x1b[31m
+_GREEN=$'\x1b[32m
+_YELLOW=$'\x1b[33m
+_BLUE=$'\x1b[34m
+_PURPLE=$'\x1b[35m
+_CYAN=$'\x1b[36m
+_WHITE=$'\x1b[37m
 
 all:
 				make $(NAME)
 
-$(NAME):		$(OBJ)
-				@echo "Compiling $(NAME) ...\c"
-				@$(CC) $(CFLAGS) $(IFLAGS) -o $(NAME) $(OBJ) $(LFLAGS)
-				@echo " DONE"
+show:
+				@echo "SRC :\n$(SRC)"
+				@echo "OBJ :\n$(OBJ)"
+				@echo "CFLAGS :\n$(CFLAGS)"
+				@echo "IFLAGS :\n$(IFLAGS)"
+				@echo "LFLAGS :\n$(LFLAGS)"
+
+install:
+				make -C libs/libft
+
+re-install:
+				make -C libs/libft re
 
 $(OBJ_DIR)/%.o : %.c
-				@mkdir $(OBJ_DIR) 2> /dev/null || true
-				@echo "Compiling $< ...\c"
+				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+				@mkdir -p $(OBJ_DIR)
 				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
-				@echo " DONE"
+				@echo "$(_GREEN)DONE$(_WHITE)"
 
-clean:
-				@rm -rf $(OBJ_DIR)
-				@echo "clean"
+$(NAME):		$(OBJ) Makefile
+				@echo "-----\n$(_GREEN)Compiling $(_YELLOW)$@ ... \c"
+				@ar rc $(NAME) $(OBJ)
+				@ranlib $(NAME)
+				@echo "$(_RED)DONE\n$(_YELLOW)-----"
 
-fclean:			clean
-				@rm -f $(NAME)
-				@echo "fclean"
+exec:			install $(NAME)
+				@echo "Compiling the $(_YELLOW)executable$(_WHITE) ... \c"
+				@$(CC) srcs/main.c $(NAME) $(CFLAGS) $(IFLAGS) $(LFLAGS) && ./a.out
+				@echo "$(_GREEN)DONE$(_WHITE)"
 
 re:				fclean all
 
-.PHONY: all clean fclean re
+clean:
+				rm -rf $(OBJ_DIR)
+
+fclean:			clean
+				rm -f $(NAME)
+
+.PHONY:			all install re-install exec re clean fclean

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:10:13 by mravily           #+#    #+#             */
-/*   Updated: 2019/12/19 21:32:35 by mravily          ###   ########.fr       */
+/*   Updated: 2019/12/21 19:09:41 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,11 @@ size_t check_flag_asterisk(char *format, size_t index, t_flag *flag)
 {
 	
 	if (flag->point == true)
+	{	
 		flag->len_precision = va_arg(*(flag->arg), int);
+		if (flag->len_precision < 0)
+			flag->len_precision = flag->len_precision * (-1);	
+	}
 	else
 		flag->len_padding = va_arg(*(flag->arg), int);
 	if (flag->len_padding < 0)
