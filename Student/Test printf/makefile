@@ -35,7 +35,7 @@ LIB =
 ##
 
 ##Basics flags
-CFLAGS=		-fsanitize=address -g
+CFLAGS=		-fsanitize=address -g -Wall -Werror -Wextra
 ##Create the flags to includes every .h needed by this program
 IFLAGS =	$(foreach dir, $(INC_DIR), -I$(dir)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
 
