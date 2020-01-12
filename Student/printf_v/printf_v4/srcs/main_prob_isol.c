@@ -1,0 +1,90 @@
+#include "ft_printf.h"
+
+ int main()
+ {
+	/*
+ 	puts("============================================");
+ 	puts("================= MIX TEST =================");
+ 	puts("============================================");
+ 	puts("================== TEST 1 ==================");
+	printf("-- %d --|\n", printf("|%17d LVcGOj2a0d86O|", -2147483647));
+	ft_printf("-- %d --|\n", ft_printf("|%17d LVcGOj2a0d86O|", -2147483647));
+	puts("================== TEST 2 ==================");
+	printf("-- %d --|\n", printf("|%-*c|", -10, 'o'));
+	ft_printf("-- %d --|\n", ft_printf("|%-*c|", -10, 'o'));
+	puts("================== TEST 3 ==================");
+	printf("-- %d --|\n", printf("|%-*.0d|", -1, 2147483647));
+	ft_printf("-- %d --|\n", ft_printf("|%-*.0d|", -1, 2147483647));
+	puts("================== TEST 4 ==================");
+	printf("-- %d --|\n", printf("|hjD%5XuX|", -2147483647));
+	ft_printf("-- %d --|\n", ft_printf("|hjD%5XuX|", -2147483647));
+	puts("================== TEST 5 ==================");
+	printf("-- %d --|\n", printf("|06 yx%12c%9c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
+	ft_printf("-- %d --|\n", ft_printf("|06 yx%12c%9c6V2ZF%-14i%-*s|", 'U', '\0', -2147483647, -3, ""));
+	puts("================== TEST 6 ==================");
+	printf("-- %d --|\n", printf("|%-10.5s%.2d|", "", 1315724962));
+	ft_printf("-- %d --|\n", ft_printf("|%-10.5s%.2d|", "", 1315724962));
+	puts("================== TEST 7 ==================");
+	printf("-- %d --|\n", printf("|%0xVkgho%20.*sFbhuJYwdx|", 1901203325, -2, ""));
+	ft_printf("-- %d --|\n", ft_printf("|%0xVkgho%20.*sFbhuJYwdx|", 1901203325, -2, ""));
+	puts("================== TEST 8 ==================");
+	printf("-- %d --|\n", printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
+	ft_printf("-- %d --|\n", ft_printf("|Xwcx%-x4Xq%-17.1sTC141qBJRIWzeckFX1UP|", -2147483647, NULL));
+	puts("================== TEST 9 ==================");
+	printf("-- %d --|\n", printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
+	ft_printf("-- %d --|\n", ft_printf("|5y9Uo4xTT6Me8vljSDrAIZIb9NNS%8.2s|", NULL));
+	puts("================= TEST 10 ==================");
+	printf("-- %d --|\n", printf("|tJpY%11.3sw20R%%FzDc|", NULL));
+	ft_printf("-- %d --|\n", ft_printf("|tJpY%11.3sw20R%%FzDc|", NULL));
+	puts("================= TEST 11 ==================");
+	printf("-- %d --|\n", printf("|%0*.0x%12cQO%01u%0us9Jue%.4d8OZ|", 5, 0, '3', 2147483647, 2147483647, 2147483647));
+	ft_printf("-- %d --|\n", ft_printf("|%0*.0x%12cQO%01u%0us9Jue%.4d8OZ|", 5, 0, '3', 2147483647, 2147483647, 2147483647));
+	puts("================= TEST 12 ==================");
+	printf("-- %d --|\n", printf("|%.*d|", -8, -1956738847));
+	ft_printf("-- %d --|\n", ft_printf("|%.*d|", -8, -1956738847));
+	puts("================= TEST 13 ==================");
+	printf("-- %d --|\n", printf("|%0*d|", 5, -1));
+	ft_printf("-- %d --|\n", ft_printf("|%0*d|", 5, -1));
+	*/
+	puts("================= TEST 14 ==================");
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		i = 8;
+	int		j = -12;
+	int		k = 12;
+	int		l = 0;
+	int		m = -12;
+	a = f;
+	b = g;
+	k = i;
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, i, a, b, i, a, b, i));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, i, a, b, i, a, b, i));
+	puts("================= TEST 15 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, j, a, b, j, a, b, j));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, j, a, b, j, a, b, j));
+	puts("================= TEST 16 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, k, a, b, k, a, b, k));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, k, a, b, k, a, b, k));
+	puts("================= TEST 17 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, l, a, b, l, a, b, l));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, l, a, b, l, a, b, l));
+	puts("================= TEST 18 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, m, a, b, m, a, b, m));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, m, a, b, m, a, b, m));
+	puts("================= TEST 19 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, c, a, b, c, a, b, c));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, c, a, b, c, a, b, c));
+	puts("================= TEST 20 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, d, a, b, d, a, b, d));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, d, a, b, d, a, b, d));
+	puts("================= TEST 21 ==================");
+	printf("-- %d --|\n", printf("|%*.*u| |%*.*x| |%*.*X|", a, b, e, a, b, e, a, b, e));
+	printf("-- %d --|\n", ft_printf("|%*.*u| |%*.*x| |%*.*X|", a, b, e, a, b, e, a, b, e));
+	return (0);
+
+}
